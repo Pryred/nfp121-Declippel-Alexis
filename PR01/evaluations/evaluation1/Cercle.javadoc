@@ -1,0 +1,15 @@
+Début de la vérification...
+[ERROR] Cercle.java:12:5: Commentaire Javadoc manquant. [JavadocVariable]
+[ERROR] Cercle.java:13:5: Commentaire Javadoc manquant. [JavadocVariable]
+[ERROR] Cercle.java:14:5: Commentaire Javadoc manquant. [JavadocVariable]
+[ERROR] Cercle.java:15:5: Commentaire Javadoc manquant. [JavadocVariable]
+[ERROR] Cercle.java:17: La première ligne de la Javadoc doit se terminer avec un point. [JavadocStyle]
+[ERROR] Cercle.java:32: La première ligne de la Javadoc doit se terminer avec un point. [JavadocStyle]
+[ERROR] Cercle.java:73: La première ligne de la Javadoc doit se terminer avec un point. [JavadocStyle]
+[ERROR] Cercle.java:80: La première ligne de la Javadoc doit se terminer avec un point. [JavadocStyle]
+[ERROR] Cercle.java:87: La première ligne de la Javadoc doit se terminer avec un point. [JavadocStyle]
+[ERROR] Cercle.java:94: La première ligne de la Javadoc doit se terminer avec un point. [JavadocStyle]
+[ERROR] Cercle.java:102: La première ligne de la Javadoc doit se terminer avec un point. [JavadocStyle]
+[ERROR] Cercle.java:126: La première ligne de la Javadoc doit se terminer avec un point. [JavadocStyle]
+[ERROR] Cercle.java:133: La première ligne de la Javadoc doit se terminer avec un point. [JavadocStyle]
+Vérification terminée.
