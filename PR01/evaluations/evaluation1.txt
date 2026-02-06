@@ -1,4 +1,6 @@
-Date de l'évaluation : mar. 03 févr. 2026 21:41:55 CET
+Date de l'évaluation : ven. 06 févr. 2026 10:20:57 CET
+
+Ne pas mettre les *.class (faire : git rm *.class)
 
 Compilation de Cercle.java : OK.
 
