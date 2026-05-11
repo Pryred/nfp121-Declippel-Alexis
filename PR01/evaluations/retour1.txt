@@ -1,0 +1,4 @@
+LISEZ-MOI.txt : non complété
+Tenir compte du retour automatique.
+Tenir compte du retour général.
+
