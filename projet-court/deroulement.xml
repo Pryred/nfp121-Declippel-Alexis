@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE partie SYSTEM "deroulement.dtd">
+<partie>
+  <coup numero="1" joueur="Alice" prise="3"/>
+  <coup numero="2" joueur="Bob" prise="2"/>
+  <coup numero="3" joueur="Alice" prise="3"/>
+  <coup numero="4" joueur="Bob" prise="1"/>
+  <coup numero="5" joueur="Alice" prise="3"/>
+  <coup numero="6" joueur="Bob" prise="1"/>
+  <resultat vainqueur="Alice"/>
+</partie>

@@ -31,7 +31,7 @@ else
 fi
 
 # Positionner CLASSPATH
-export CLASSPATH=$src:$bin:${CLASSPATH:-.}
+export CLASSPATH="$src;$bin;."
 
 # Déterminer si l'option -enconding latin1 est nécessaire
 javacOpt=
