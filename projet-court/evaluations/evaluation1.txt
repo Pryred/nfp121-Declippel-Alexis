@@ -1,37 +1,98 @@
-Date de l'évaluation : ven. 06 mars 2026 16:29:48 CET
+Date de l'évaluation : lun. 29 juin 2026 21:11:44 CEST
 
 LISEZ-MOI.txt : NON MODIFIÉ
 
-Nombre de similitudes : 0	(voir evaluation1/sim_java.txt)
+Nombre de similitudes : 9	(voir evaluation1/sim_java.txt)
+Les similitudes indiquent généralement du code à restructurer.
 
-Erreurs checkstyle (différentes/types) : 0/0	(voir evaluation1//checkstyle.txt)
+Erreurs checkstyle (différentes/types) : 7/4	(voir evaluation1//checkstyle.txt)
 
-Classe OperationInterditeException : NON DÉFINIE (ou pas sur Gitlab)
+Classe OperationInterditeException : OperationInterditeException (ok)
 
-Procuration sur le jeu réel : Non identifiée
+Procuration sur le jeu réel : allumettes/JeuProcuration.java (ok)
 
-OperationInterditeException : JAMAIS LEVÉE
-OperationInterditeException : JAMAIS RECUPÉRÉE
+OperationInterditeException, levée dans : allumettes/JeuProcuration.java (ok)
+OperationInterditeException : Pourquoi la récupérer dans plusieurs classes ?
+  | allumettes/Arbitre.java:63:     } catch (OperationInterditeException e) {
+  | allumettes/StrategieSwing.java:111:     } catch (OperationInterditeException e) {
 
-Throwable, Exception et RuntimeException ne devraient pas être récupérées car trop générales... ok
+
+Throwable, Exception et RuntimeException ne devraient pas être récupérées car trop générales... ERREUR
+  | allumettes/StrategieSupertricheur.java:33:      } catch (Exception e) {
+  | allumettes/StrategieSwing.java:118:     } catch (Exception e) {
 
 AssertionError ne doit pas être récupérée... ok
 
 Autres exceptions récupérées :
-  | allumettes/Jouer.java:20:       } catch (ConfigurationException e) {
+  | allumettes/Arbitre.java:97:     } catch (CoupInvalideException e) {
+  | allumettes/StrategieHumain.java:57:     } catch (CoupInvalideException e) {
+  | allumettes/EnregistreurXML.java:47:     } catch (IOException e) {
+  | allumettes/Jouer.java:39:       } catch (ConfigurationException e) {
+  | allumettes/StrategieTricheur.java:34:       } catch (CoupInvalideException e) {
+  | allumettes/StrategieSwing.java:144:         } catch (InterruptedException e) {
 
-Utilisation de 'Scanner' : NON
+Utilisation de 'Scanner' : ok
+  | allumettes/StrategieHumain.java:18:     Scanner scanner = EntreeStandard.getScanner();
+  | allumettes/StrategieHumain.java:39: private boolean traiterEntreeNonEntiere(Scanner scanner, Jeu jeu) {
+  | allumettes/EntreeStandard.java:5:/** Fournit l'unique Scanner de l'application lisant l'entrée standard.
+  | allumettes/EntreeStandard.java:6: * Un seul scanner doit exister car un Scanner fait des lectures en avance
+  | allumettes/EntreeStandard.java:13:  private static final Scanner SCANNER = new Scanner(System.in);
+  | allumettes/EntreeStandard.java:22:  public static Scanner getScanner() {
 
-Utilisation de 'split' : NON
+Utilisation de 'split' : ok
+  | allumettes/Jouer.java:52:       String[] morceaux = description.split("@");
 
-Utilisation de 'Random' : NON
+Utilisation de 'Random' : ok
+  | allumettes/StrategieNaif.java:3:import java.util.Random;
+  | allumettes/StrategieNaif.java:12:   private final Random random = new Random();
 
-Utilisation de '3' : ok
+Utilisation de '3' : Ne pas utiliser de constante littérale hors -1, 0 ou 1 (peut-être PRISE_MAX ?)
+  |     allumettes/StrategieNaif.java:5:/** Stratégie naïve : choisir aléatoirement un nombre entre 1 et 3,
+  |     allumettes/StrategieSwing.java:43:  /** Bouton pour prendre 3 allumettes. */
+  |     allumettes/StrategieSwing.java:78:      this.b3 = new JButton("3");
+  |     allumettes/StrategieSwing.java:86:      this.b3.addActionListener(e -> validerChoix(3));
+  |     allumettes/StrategieSwing.java:134:         this.b3.setEnabled(jeu.getNombreAllumettes() >= 3);
 
-Affichage de 'Impossible !' : jamais affiché (ERREUR)
+Affichage de 'Impossible !' : ok
 
 Utilisation de 'System.exit' : ok
 
 Compilation de Jouer.java : OK.
-Pas de fichier Arbitre.java sur Gitlab !
-Fichiers manquants sur Gitlab ? Un 'git push' oublié ?
+Compilation de Arbitre.java : OK.
+Compilation de StrategieRapideTest.java : OK.
+Test exemplePresqueSujet : ok
+Test exempleTricheurSujet : ok
+Test exempleConfiantTricheurSujet : ok
+Test exempleRobustesse : ok
+Test exempleHumainTricheurExpert : ok
+Test exempleMaxLou : ok
+Test exempleRapideRapide : ok
+Test exempleTricheurExpert : ok
+
+Test RobustesseTest : Tests run: 24,  Failures: 4	(voir evaluation1/RobustesseTest.txt)
+    1) testerNomNonDefini(RobustesseTest)
+        Le programme ne se termine pas.
+    2) testerNomNonDefiniConfiant(RobustesseTest)
+        Le programme ne se termine pas.
+    3) testerNomNonDefiniSymetrieConfiant(RobustesseTest)
+        Le programme ne se termine pas.
+    4) testerNomNonDefiniSymetrie(RobustesseTest)
+        Le programme ne se termine pas.
+
+
+On recommence avec les classes/interfaces fournies : Jeu ConfigurationException CoupInvalideException
+Test exemplePresqueSujet : ok
+
+Vérification du respect du diagramme de classe...
+Test FormeC7Test : OK (1 test)	(voir evaluation1/FormeC7Test.txt)
+Test FormeC9Test : OK (1 test)	(voir evaluation1/FormeC9Test.txt)
+Test FormeC14Test : OK (1 test)	(voir evaluation1/FormeC14Test.txt)
+Test FormeExceptionsTest : OK (1 test)	(voir evaluation1/FormeExceptionsTest.txt)
+Test FormeProxyTest : Tests run: 2,  Failures: 1	(voir evaluation1/FormeProxyTest.txt)
+    1) testerProcuration(FormeProxyTest)
+        allumettes.JeuProcuration.retirer : Est-il logique qu'elle dise pouvoir propager CoupInvalideException ?
+
+
+Compilation de StrategieRapideTest.java : OK.
+Test allumettes.StrategieRapideTest : OK (5 tests)	(voir evaluation1/allumettes.StrategieRapideTest.txt)
+Tous les tests réussissent

@@ -1,6 +1,181 @@
+File allumettes/Arbitre.java: 480 tokens, 133 lines (not NL-terminated)
 File allumettes/CoupInvalideException.java: 68 tokens, 39 lines
+File allumettes/Joueur.java: 103 tokens, 50 lines
+File allumettes/OperationInterditeException.java: 21 tokens, 18 lines
+File allumettes/Jeu13Allumettes.java: 136 tokens, 44 lines
+File allumettes/StrategieHumain.java: 208 tokens, 62 lines
+File allumettes/StrategieRapide.java: 45 tokens, 15 lines
+File allumettes/JeuProcuration.java: 86 tokens, 38 lines
 File allumettes/ConfigurationException.java: 21 tokens, 16 lines
-File allumettes/Jouer.java: 174 tokens, 54 lines
+File allumettes/EnregistreurXML.java: 187 tokens, 52 lines (not NL-terminated)
+File allumettes/Jouer.java: 425 tokens, 114 lines
 File allumettes/Jeu.java: 23 tokens, 21 lines
-Total input: 4 files (4 new, 0 old), 286 tokens
+File allumettes/EntreeStandard.java: 37 tokens, 26 lines
+File allumettes/StrategieExpert.java: 75 tokens, 24 lines
+File allumettes/StrategieSupertricheur.java: 152 tokens, 42 lines (not NL-terminated)
+File allumettes/StrategieNaif.java: 67 tokens, 21 lines
+File allumettes/Strategie.java: 16 tokens, 17 lines
+File allumettes/StrategieTricheur.java: 134 tokens, 40 lines
+File allumettes/StrategieSwing.java: 702 tokens, 161 lines (not NL-terminated)
+Total input: 19 files (19 new, 0 old), 2986 tokens
+
+allumettes/StrategieSupertricheur.java: line 29-33 [44]
+allumettes/StrategieTricheur.java: line 30-34
+< 			while (vraiJeu.getNombreAllumettes() > ALLUMETTES_VISEES) {
+< 				int reste = vraiJeu.getNombreAllumettes() - ALLUMETTES_VISEES;
+< 				vraiJeu.retirer(Math.min(Jeu.PRISE_MAX, reste));
+< 			}
+< 		} catch (Exception e) {
+---
+> 			while (jeu.getNombreAllumettes() > cible) {
+> 				int reste = jeu.getNombreAllumettes() - cible;
+> 				jeu.retirer(Math.min(Jeu.PRISE_MAX, reste));
+> 			}
+> 		} catch (CoupInvalideException e) {
+
+allumettes/StrategieSupertricheur.java: line 1-17 [43]
+allumettes/StrategieTricheur.java: line 1-16
+< package allumettes;
+< 
+< import java.lang.reflect.Field;
+< 
+< /** Stratégie supertricheur : triche même en mode non confiant en accédant
+<  * directement au jeu réel caché derrière la procuration grâce à la réflexion.
+<  * @author Alexis Declippel
+<  */
+< public class StrategieSupertricheur implements Strategie {
+< 
+< 	/** Nombre d'allumettes que le tricheur veut laisser avant de prendre. */
+< 	private static final int ALLUMETTES_VISEES = 2;
+< 
+< 	@Override
+< 	public int getPrise(Jeu jeu, String nomJoueur) {
+< 		assert jeu != null : "Le jeu ne doit pas être null";
+< 		System.out.println("[Je triche...]");
+---
+> package allumettes;
+> 
+> /** Stratégie tricheur : le joueur retire directement des allumettes du jeu
+>  * pour n'en laisser que deux, puis annonce qu'il n'en prend qu'une seule,
+>  * s'assurant ainsi la victoire.
+>  * @author Alexis Declippel
+>  */
+> public class StrategieTricheur implements Strategie {
+> 
+> 	/** Nombre d'allumettes que le tricheur veut laisser avant de prendre. */
+> 	private static final int ALLUMETTES_VISEES = 2;
+> 
+> 	@Override
+> 	public int getPrise(Jeu jeu, String nomJoueur) {
+> 		assert jeu != null : "Le jeu ne doit pas être null";
+> 		System.out.println("[Je triche...]");
+
+allumettes/StrategieSwing.java: line 66-71 [32]
+allumettes/StrategieSwing.java: line 79-84
+< 		this.champTriche = new JTextField("1", 2);
+< 		panelTriche.add(this.bTricher);
+< 		panelTriche.add(this.champTriche);
+< 		this.fenetre.add(panelTriche, BorderLayout.NORTH);
+< 
+< 		this.labelAllumettes = new JLabel("", SwingConstants.CENTER);
+---
+> 		panelBoutons.add(this.b1);
+> 		panelBoutons.add(this.b2);
+> 		panelBoutons.add(this.b3);
+> 		this.fenetre.add(panelBoutons, BorderLayout.SOUTH);
+> 
+> 		this.b1.addActionListener(e -> validerChoix(1));
+
+allumettes/StrategieRapide.java: line 1-11 [28]
+allumettes/StrategieExpert.java: line 1-13
+< package allumettes;
+< 
+< /** Stratégie rapide : prendre le maximum d'allumettes possible pour
+<  * terminer la partie le plus vite possible.
+<  * @author Alexis Declippel
+<  */
+< public class StrategieRapide implements Strategie {
+< 
+< 	@Override
+< 	public int getPrise(Jeu jeu, String nomJoueur) {
+< 		assert jeu != null : "Le jeu ne doit pas être null";
+---
+> package allumettes;
+> 
+> /** Stratégie experte : jouer du mieux possible.  Le but est de laisser à
+>  * l'adversaire un nombre d'allumettes congru à 1 modulo (PRISE_MAX + 1),
+>  * position perdante pour lui.  Si ce n'est pas possible, on prend une seule
+>  * allumette pour prolonger la partie.
+>  * @author Alexis Declippel
+>  */
+> public class StrategieExpert implements Strategie {
+> 
+> 	@Override
+> 	public int getPrise(Jeu jeu, String nomJoueur) {
+> 		assert jeu != null : "Le jeu ne doit pas être null";
+
+allumettes/StrategieExpert.java: line 11-14 [27]
+allumettes/StrategieNaif.java: line 14-17
+< 	@Override
+< 	public int getPrise(Jeu jeu, String nomJoueur) {
+< 		assert jeu != null : "Le jeu ne doit pas être null";
+< 		int restantes = jeu.getNombreAllumettes();
+---
+> 	@Override
+> 	public int getPrise(Jeu jeu, String nomJoueur) {
+> 		assert jeu != null : "Le jeu ne doit pas être null";
+> 		int maximum = Math.min(Jeu.PRISE_MAX, jeu.getNombreAllumettes());
+
+allumettes/StrategieSwing.java: line 62-66 [26]
+allumettes/StrategieSwing.java: line 73-77
+< 		this.fenetre.setSize(250, 150);
+< 
+< 		JPanel panelTriche = new JPanel();
+< 		this.bTricher = new JButton("Tricher");
+< 		this.champTriche = new JTextField("1", 2);
+---
+> 		this.fenetre.add(this.labelAllumettes, BorderLayout.CENTER);
+> 
+> 		JPanel panelBoutons = new JPanel();
+> 		this.b1 = new JButton("1");
+> 		this.b2 = new JButton("2");
+
+allumettes/StrategieSwing.java: line 82-85 [26]
+allumettes/StrategieSwing.java: line 85-87
+< 		this.fenetre.add(panelBoutons, BorderLayout.SOUTH);
+< 
+< 		this.b1.addActionListener(e -> validerChoix(1));
+< 		this.b2.addActionListener(e -> validerChoix(2));
+---
+> 		this.b2.addActionListener(e -> validerChoix(2));
+> 		this.b3.addActionListener(e -> validerChoix(3));
+> 		this.bTricher.addActionListener(e -> actionTricher());
+
+allumettes/Jouer.java: line 68-73 [24]
+allumettes/Jouer.java: line 74-79
+< 			case "humain":
+< 				return new StrategieHumain();
+< 			case "naif":
+< 				return new StrategieNaif();
+< 			case "rapide":
+< 				return new StrategieRapide();
+---
+> 			case "expert":
+> 				return new StrategieExpert();
+> 			case "tricheur":
+> 				return new StrategieTricheur();
+> 			case "supertricheur":
+> 				return new StrategieSupertricheur();
+
+allumettes/Arbitre.java: line 61-65 [24]
+allumettes/StrategieHumain.java: line 56-58
+< 			xml.ecrireFichier(joueurCourant.getNom(), null);
+< 			
+< 		} catch (OperationInterditeException e) {
+< 			System.out.println("Abandon de la partie car "
+< 					+ joueurCourant.getNom() + " triche !");
+---
+> 					+ jeu.getNombreAllumettes() + ". Chut !]");
+> 		} catch (CoupInvalideException e) {
+> 			System.out.println("[Impossible de tricher : " + e.getMessage() + "]");
 
