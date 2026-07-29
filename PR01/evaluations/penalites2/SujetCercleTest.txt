@@ -1,0 +1,18 @@
+SCORE: 1
+WARNING: A command line option has enabled the Security Manager
+WARNING: The Security Manager is deprecated and will be removed in a future release
+JUnit version 4.13.2
+......E..........
+
+There was 1 failure:
+1) testerE18(SujetCercleTest)
+java.lang.AssertionError: E18 : erreur si translation de A (x) expected:<1.0> but was:<11.0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at SujetCercleTest.memesCoordonnees(SujetCercleTest.java:48)
+	at SujetCercleTest.testerE18(SujetCercleTest.java:138)
+
+FAILURES!!!
+Tests run: 16,  Failures: 1
+

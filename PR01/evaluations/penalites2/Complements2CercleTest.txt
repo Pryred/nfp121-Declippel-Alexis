@@ -1,0 +1,18 @@
+SCORE: 1
+WARNING: A command line option has enabled the Security Manager
+WARNING: The Security Manager is deprecated and will be removed in a future release
+JUnit version 4.13.2
+..E.methods = []
+
+
+There was 1 failure:
+1) testerE11couleurPoint(Complements2CercleTest)
+java.lang.AssertionError: E11 : Le centre n'a pas la même couleur que le point passé en paramètre. expected:<java.awt.Color[r=255,g=0,b=255]> but was:<java.awt.Color[r=0,g=255,b=0]>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at Complements2CercleTest.testerE11couleurPoint(Complements2CercleTest.java:43)
+
+FAILURES!!!
+Tests run: 3,  Failures: 1
+

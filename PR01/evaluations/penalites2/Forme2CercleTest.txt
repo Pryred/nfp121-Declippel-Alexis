@@ -1,0 +1,16 @@
+SCORE: 1
+WARNING: A command line option has enabled the Security Manager
+WARNING: The Security Manager is deprecated and will be removed in a future release
+JUnit version 4.13.2
+..E.......
+
+There was 1 failure:
+1) testToString(Forme2CercleTest)
+java.lang.AssertionError: toString de Cercle doit utiliser toString de Point !
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at Forme2CercleTest.testToString(Forme2CercleTest.java:52)
+
+FAILURES!!!
+Tests run: 9,  Failures: 1
+
