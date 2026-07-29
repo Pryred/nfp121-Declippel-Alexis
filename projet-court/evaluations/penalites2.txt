@@ -1,0 +1,108 @@
+Date de l'évaluation : mar. 14 juil. 2026 20:57:00 CEST
+
+LISEZ-MOI.txt : NON MODIFIÉ
+
+Nombre de similitudes : 9	(voir penalites2/sim_java.txt)
+Les similitudes indiquent généralement du code à restructurer.
+
+Erreurs checkstyle (différentes/types) : 7/4	(voir penalites2//checkstyle.txt)
+
+Classe OperationInterditeException : OperationInterditeException (ok)
+
+Procuration sur le jeu réel : allumettes/JeuProcuration.java (ok)
+
+OperationInterditeException, levée dans : allumettes/JeuProcuration.java (ok)
+OperationInterditeException : Pourquoi la récupérer dans plusieurs classes ?	(pénalité : 2)
+  | allumettes/Arbitre.java:63:     } catch (OperationInterditeException e) {
+  | allumettes/StrategieSwing.java:111:     } catch (OperationInterditeException e) {
+
+
+Throwable, Exception et RuntimeException ne devraient pas être récupérées car trop générales... ERREUR	(pénalité : 2)
+  | allumettes/StrategieSupertricheur.java:33:      } catch (Exception e) {
+  | allumettes/StrategieSwing.java:118:     } catch (Exception e) {
+
+AssertionError ne doit pas être récupérée... ok
+
+Autres exceptions récupérées :
+  | allumettes/Arbitre.java:97:     } catch (CoupInvalideException e) {
+  | allumettes/StrategieHumain.java:57:     } catch (CoupInvalideException e) {
+  | allumettes/EnregistreurXML.java:47:     } catch (IOException e) {
+  | allumettes/Jouer.java:39:       } catch (ConfigurationException e) {
+  | allumettes/StrategieTricheur.java:34:       } catch (CoupInvalideException e) {
+  | allumettes/StrategieSwing.java:144:         } catch (InterruptedException e) {
+
+Utilisation de 'Scanner' : ok
+  | allumettes/StrategieHumain.java:18:     Scanner scanner = EntreeStandard.getScanner();
+  | allumettes/StrategieHumain.java:39: private boolean traiterEntreeNonEntiere(Scanner scanner, Jeu jeu) {
+  | allumettes/EntreeStandard.java:5:/** Fournit l'unique Scanner de l'application lisant l'entrée standard.
+  | allumettes/EntreeStandard.java:6: * Un seul scanner doit exister car un Scanner fait des lectures en avance
+  | allumettes/EntreeStandard.java:13:  private static final Scanner SCANNER = new Scanner(System.in);
+  | allumettes/EntreeStandard.java:22:  public static Scanner getScanner() {
+
+Utilisation de 'split' : ok
+  | allumettes/Jouer.java:52:       String[] morceaux = description.split("@");
+
+Utilisation de 'Random' : ok
+  | allumettes/StrategieNaif.java:3:import java.util.Random;
+  | allumettes/StrategieNaif.java:12:   private final Random random = new Random();
+
+Utilisation de '3' : Ne pas utiliser de constante littérale hors -1, 0 ou 1 (peut-être PRISE_MAX ?)	(pénalité : 2)
+  |     allumettes/StrategieNaif.java:5:/** Stratégie naïve : choisir aléatoirement un nombre entre 1 et 3,
+  |     allumettes/StrategieSwing.java:43:  /** Bouton pour prendre 3 allumettes. */
+  |     allumettes/StrategieSwing.java:78:      this.b3 = new JButton("3");
+  |     allumettes/StrategieSwing.java:86:      this.b3.addActionListener(e -> validerChoix(3));
+  |     allumettes/StrategieSwing.java:134:         this.b3.setEnabled(jeu.getNombreAllumettes() >= 3);
+
+Affichage de 'Impossible !' : ok
+
+Utilisation de 'System.exit' : ok
+
+Compilation de Jouer.java : OK.
+Compilation de Arbitre.java : OK.
+Compilation de StrategieRapideTest.java : OK.
+Test exemplePresqueSujet : ok
+Test exempleTricheurSujet : ok
+Test exempleConfiantTricheurSujet : ok
+Test exempleRobustesse : ok
+Test exempleHumainTricheurExpert : ok
+Test exempleMaxLou : ok
+Test exempleRapideRapide : ok
+Test exempleTricheurExpert : ok
+Test exempleExpertTest : ok
+Test exempleExpertTest2 : ok
+Test exempleExpertTest3 : ok
+Test exempleExpertTest4 : ok
+Test exempleRapideTest : ok
+Test exempleRapideTest1 : ok
+Test exempleRapideTest2 : ok
+Test exempleRapideTest3 : ok
+
+Test RobustesseTest : Tests run: 24,  Failures: 4	(pénalité : 2)	(voir penalites2/RobustesseTest.txt)
+    1) testerNomNonDefini(RobustesseTest)
+        Le programme ne se termine pas.
+    2) testerNomNonDefiniConfiant(RobustesseTest)
+        Le programme ne se termine pas.
+    3) testerNomNonDefiniSymetrieConfiant(RobustesseTest)
+        Le programme ne se termine pas.
+    4) testerNomNonDefiniSymetrie(RobustesseTest)
+        Le programme ne se termine pas.
+
+
+On recommence avec les classes/interfaces fournies : Jeu ConfigurationException CoupInvalideException
+Test exemplePresqueSujet : ok
+
+Vérification du respect du diagramme de classe...
+Test FormeC7Test : OK (1 test)	(voir penalites2/FormeC7Test.txt)
+Test FormeC9Test : OK (1 test)	(voir penalites2/FormeC9Test.txt)
+Test FormeC14Test : OK (1 test)	(voir penalites2/FormeC14Test.txt)
+Test FormeExceptionsTest : OK (1 test)	(voir penalites2/FormeExceptionsTest.txt)
+Test FormeProxyTest : Tests run: 2,  Failures: 1	(pénalité : 2)	(voir penalites2/FormeProxyTest.txt)
+    1) testerProcuration(FormeProxyTest)
+        allumettes.JeuProcuration.retirer : Est-il logique qu'elle dise pouvoir propager CoupInvalideException ?
+
+
+Compilation de StrategieRapideTest.java : OK.
+Test allumettes.StrategieRapideTest : OK (5 tests)	(voir penalites2/allumettes.StrategieRapideTest.txt)
+Tous les tests réussissent
+
+Total pénalités : 10
